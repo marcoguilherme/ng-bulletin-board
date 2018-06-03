@@ -6,18 +6,21 @@
         <tr>
             <th>#Id</th>
             <th>Title</th>
+            <td>Action</td>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let task of tasks">
             <th>{{ task.id }}</th>
             <td>{{ task.title }}</td>
+            <td><a [routerLink]="['/tasks', task.id]" class="btn btn-info">Detail</a></td>
         </tr>
     </tbody>
     <tfoot>
         <tr>
             <th>#Id</th>
             <th>Title</th>
+            <td>Action</td>
         </tr>
 
     </tfoot>
