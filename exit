@@ -1,0 +1,17 @@
+[33mcommit dbda2703ca467fb38e84c975186baef5e0e49466[m
+Author: marcoguilherme <mgbm13@gmail.com>
+Date:   Sat Jun 2 21:02:06 2018 -0300
+
+    Added task details
+
+[33mcommit af6dad9b4fb7f5a423c4dd7c32bc135caffc4885[m
+Author: marcoguilherme <mgbm13@gmail.com>
+Date:   Sat Jun 2 04:01:54 2018 -0300
+
+    Task model created and implemented
+
+[33mcommit 1165b60b33f47593f6e432b244372d474bb5d75d[m
+Author: marcoguilherme <mgbm13@gmail.com>
+Date:   Sat Jun 2 03:52:09 2018 -0300
+
+    First commit with TasksComponent Created
