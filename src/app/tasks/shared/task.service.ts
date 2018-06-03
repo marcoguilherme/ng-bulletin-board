@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Task } from './task.model';
 
+
 const TASKS: Array<Task> = [
     { id: 1, title: 'Fazer tarefa 1' },
     { id: 2, title: 'Fazer tarefa 2' },
@@ -12,7 +13,15 @@ const TASKS: Array<Task> = [
 @Injectable()
 
 export class TaskService {
-    public getTasks(): Array<Task>{
-        return TASKS;
+
+    public getTasks():Promise<Task[]>{
+        let promise = new Promise((resolve, reject)=>{
+            if(TASKS.length > 0){
+                resolve(TASKS)
+            }else{
+                reject('No tasks available')
+            }
+        })
+        return promise;
     }
 }

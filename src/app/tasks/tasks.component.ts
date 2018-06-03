@@ -19,7 +19,9 @@ export class TasksComponent implements OnInit {
     public constructor(private taskService: TaskService){}
     
     public ngOnInit(){
-        this.tasks = this.taskService.getTasks();
+        this.taskService.getTasks()
+            .then(result => this.tasks = result)
+            .catch(result => console.log(result))
     }
 
     public onSelect(task: Task):void{
