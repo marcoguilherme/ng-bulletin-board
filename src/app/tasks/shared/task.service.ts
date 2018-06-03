@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { Task } from './task.model';
 
-
 const TASKS: Array<Task> = [
     { id: 1, title: 'Fazer tarefa 1' },
     { id: 2, title: 'Fazer tarefa 2' },
@@ -23,5 +22,9 @@ export class TaskService {
             }
         })
         return promise;
+    }
+
+    public getImportantTasks():Promise<Task[]>{
+        return Promise.resolve(TASKS.slice(0, 3));
     }
 }

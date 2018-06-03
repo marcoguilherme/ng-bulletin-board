@@ -1,6 +1,4 @@
-<div class="alert alert-danger error_message" role="alert" *ngIf="errors">
-    {{ errors }}
-</div>
+<errors [errors]="errors"></errors>
 
 <table class="table table-hover task_list" *ngIf="tasks">
     <thead>
