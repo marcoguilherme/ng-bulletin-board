@@ -1,19 +1,20 @@
-<div *ngIf="task" class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="taskModalLabel">Task Detail: {{ task.title }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" >
-                <input [(ngModel)]="task.title" type="text" class="form-control">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
+<div *ngIf="task">
+  <h1>Task detail: {{ task?.title }}</h1>
+  
+  <form class="form-horizontal">
+    <div class="form-group row">
+    <label for="title" class="col-sm-2 col-form-label">Title</label>
+      <div class="col-sm-6">
+        <input type="text" class="form-control" [(ngModel)]="task.title" id="title" placeholder="Title">
+      </div>
     </div>
-</div>  <!-- ./End of task with selected modal -->
+  
+    <fieldset class="form-group">
+    </fieldset>
+    <div class="form-group row">
+      <div class="col-sm-6">
+        <button type="submit" class="btn btn-success">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
