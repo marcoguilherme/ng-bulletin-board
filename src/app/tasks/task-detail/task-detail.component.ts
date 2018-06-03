@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from "@angular/router";
+import { Location } from "@angular/common";
 
 import { switchMap } from 'rxjs/operators';
 
@@ -18,6 +19,7 @@ export class TaskDetailComponent implements OnInit{
     public constructor(
         private taskService: TaskService,
         private route: ActivatedRoute,
+        private location: Location
     ){}
 
     ngOnInit(){
@@ -26,5 +28,9 @@ export class TaskDetailComponent implements OnInit{
                 this.taskService.getTask(+params['id'])
             ))
             .subscribe( (task: Task) => this.task = task )
+    }
+
+    public goBack(){
+        this.location.back();
     }
 }
