@@ -17,10 +17,12 @@ const TASKS: Array<Task> = [
 
 export class TaskService {
 
+    public taskUrl = "api/tasks"
+
     public constructor(private http: Http){}
 
     public getTasks():Observable<Task[]>{
-        return this.http.get('api/tasks').pipe(
+        return this.http.get(this.taskUrl).pipe(
             map( (response: Response) => response.json().data as Task[] )
         )
     }
@@ -29,8 +31,12 @@ export class TaskService {
         return Promise.resolve(TASKS.slice(0, 3));
     }
 
-    public getTask(id: number): Promise<Task>{
-        return this.getTasks()
-             .then(tasks => tasks.find(task => task.id === id ))
+    public getTask(id: number): Observable<Task>{
+
+        let url = `${this.taskUrl}/${id}`;
+
+        return this.http.get(url).pipe(
+            map((response: Response)=> response.json().data as Task)
+        )
     }
 }
