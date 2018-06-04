@@ -1,7 +1,10 @@
-import { Http } from '@angular/http'
+import { Http, Response } from '@angular/http'
 import { Injectable } from '@angular/core';
 
 import { Task } from './task.model';
+import { map } from 'rxjs/operators'
+import { Observable } from 'rxjs/internal/Observable';
+import { catchError } from 'rxjs/internal/operators/catchError';
 
 const TASKS: Array<Task> = [
     { id: 1, title: 'Fazer tarefa 1' },
@@ -16,15 +19,10 @@ export class TaskService {
 
     public constructor(private http: Http){}
 
-    public getTasks():Promise<Task[]>{
-        let promise:any = new Promise((resolve, reject)=>{
-            if(TASKS.length > 0){
-                resolve(TASKS)
-            }else{
-                reject('No tasks available')
-            }
-        })
-        return promise;
+    public getTasks():Observable<Task[]>{
+        return this.http.get('api/tasks').pipe(
+            map( (response: Response) => response.json().data as Task[] )
+        )
     }
 
     public getImportantTasks():Promise<Task[]>{
