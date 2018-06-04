@@ -21,7 +21,8 @@ export class TasksComponent implements OnInit {
         this.taskService.getTasks()
             .subscribe(
                 tasks => this.tasks = tasks,
-                error => this.errors = error
+                error => this.errors = error.statusText,
+                () => console.log('Completed')
             )
     }
 

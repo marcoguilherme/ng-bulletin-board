@@ -15,6 +15,7 @@ import { TaskService } from '../shared/task.service';
 export class TaskDetailComponent implements OnInit{
 
     public task: Task;
+    public errors;
 
     public constructor(
         private taskService: TaskService,
@@ -27,7 +28,10 @@ export class TaskDetailComponent implements OnInit{
             switchMap((params: Params):any => 
                 this.taskService.getTask(+params['id'])
             ))
-            .subscribe( (task: Task) => this.task = task )
+            .subscribe( 
+                (task: Task) => this.task = task,
+                (error) => console.log(error)
+            )
     }
 
     public goBack(){

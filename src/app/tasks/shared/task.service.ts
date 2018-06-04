@@ -23,7 +23,7 @@ export class TaskService {
 
     public getTasks():Observable<Task[]>{
         return this.http.get(this.taskUrl).pipe(
-            map( (response: Response) => response.json().data as Task[] )
+            map( (response: Response) => response.json() as Task[] )
         )
     }
 
@@ -36,7 +36,7 @@ export class TaskService {
         let url = `${this.taskUrl}/${id}`;
 
         return this.http.get(url).pipe(
-            map((response: Response)=> response.json().data as Task)
+            map((response: Response)=> response.json() as Task)
         )
     }
 }
