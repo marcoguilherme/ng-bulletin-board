@@ -1,0 +1,11 @@
+EXEMPO: YOUTUBE
+
+    Canal(observado/observable)
+        -Lista de inscritos[]
+        -Receber insricao(inscrito)
+        -remover inscricao(inscrito)
+        -notificar inscritos(novo video)  
+            inscrito.receberNotificacao(novo video)
+
+    inscritos(Observador/observer)
+        -Receber notificacao(novo video)
