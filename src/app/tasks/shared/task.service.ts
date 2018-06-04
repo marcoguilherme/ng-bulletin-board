@@ -6,13 +6,6 @@ import { map } from 'rxjs/operators'
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError } from 'rxjs/internal/operators/catchError';
 
-const TASKS: Array<Task> = [
-    { id: 1, title: 'Fazer tarefa 1' },
-    { id: 2, title: 'Fazer tarefa 2' },
-    { id: 3, title: 'Fazer tarefa 3' },
-    { id: 4, title: 'Fazer tarefa 4' }
-];
-
 @Injectable()
 
 export class TaskService {
@@ -27,8 +20,10 @@ export class TaskService {
         )
     }
 
-    public getImportantTasks():Promise<Task[]>{
-        return Promise.resolve(TASKS.slice(0, 3));
+    public getImportantTasks():Observable<Task[]>{
+        return this.getTasks().pipe(
+            map( response => response.slice(0, 3))
+        )
     }
 
     public getTask(id: number): Observable<Task>{

@@ -17,7 +17,10 @@ export class DashboardComponent implements OnInit {
 
     public ngOnInit(){
         this.taskSerivce.getImportantTasks()
-            .then(result => this.tasks = result)
-            .catch(result => this.errors = result)
+        .subscribe(
+            response => this.tasks = response,
+            error => this.errors = error,
+            () => console.log('Completed')
+        )
     }
 }

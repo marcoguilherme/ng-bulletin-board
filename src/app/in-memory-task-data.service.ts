@@ -10,7 +10,7 @@ export class InMemoryTaskDataService implements InMemoryDbService {
         let tasks = [
             { id: 1, title: 'Create a new project' },
             { id: 2, title: 'Create a new profile on linkedin' },
-            { id: 3, title: 'Study abou IBM Watson' },
+            { id: 3, title: 'Study about IBM Watson' },
             { id: 4, title: 'Study about machine learning' },
             { id: 5, title: 'Study about design pattern' },
         ];
