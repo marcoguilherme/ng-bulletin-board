@@ -1,5 +1,5 @@
 <h2 class="page-header">Bulletin board</h2>
-<errors [errors]="errors"></errors>
+<app-alert-message [alertMessage]="alertMessage" [alertType]="alertType"></app-alert-message>
 
 <table class="table table-hover task_list" *ngIf="tasks">
     <thead>

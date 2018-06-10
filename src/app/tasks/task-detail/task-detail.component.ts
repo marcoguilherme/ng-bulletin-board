@@ -15,7 +15,8 @@ import { TaskService } from '../shared/task.service';
 export class TaskDetailComponent implements OnInit {
 
     public task: Task;
-    public errors;
+    public alertMessage: string;
+    public alertType: string;
 
     public constructor(
         private taskService: TaskService,
@@ -36,5 +37,24 @@ export class TaskDetailComponent implements OnInit {
 
     public goBack() {
         this.location.back();
+    }
+
+    public updateTask() {
+        if (this.task.title) {
+            this.taskService.updateTask(this.task)
+                .subscribe(
+                    () => {
+                        this.alertMessage = 'Data updated';
+                        this.alertType = 'alert alert-success';
+                    },
+                    error => {
+                        this.alertMessage = error;
+                        this.alertType = 'alert alert-danger';
+                    }
+                );
+        } else {
+            this.alertMessage = 'Title cannot be empty';
+            this.alertType = 'alert alert-danger';
+        }
     }
 }

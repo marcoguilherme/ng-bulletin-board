@@ -1,3 +1,5 @@
+<app-alert-message [alertMessage]="alertMessage" [alertType]="alertType"></app-alert-message>
+
 <h2 class="page-header">Task detail: {{ task?.title }}</h2>
 
 <div class="form-horizontal" *ngIf="task">
@@ -13,7 +15,7 @@
   <div class="form-group row">
     <div class="col-sm-6">
       <button type="submit" class="btn btn-secondary" (click)="goBack()">back</button>
-      <button type="submit" class="btn btn-success">Save</button>
+      <button type="submit" class="btn btn-success" (click)="updateTask()">Save</button>
     </div>
   </div>
 </div>

@@ -10,15 +10,19 @@ import { TaskService } from '../tasks/shared/task.service';
 
 export class DashboardComponent implements OnInit {
     public tasks: Task[];
-    public errors: string;
+    public alertMessage: string;
+    public alertType: string;
 
     public constructor(private taskSerivce: TaskService) {}
 
-    public ngOnInit(){
+    public ngOnInit() {
         this.taskSerivce.getImportantTasks()
         .subscribe(
             response => this.tasks = response,
-            error => this.errors = error,
+            error => {
+                this.alertMessage = error,
+                this.alertType = 'alert alert-danger';
+            },
             () => console.log('Completed')
         );
     }
