@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Task } from './shared/task.model'
+import { Task } from './shared/task.model';
 import { TaskService } from './shared/task.service';
 
 @Component({
@@ -10,23 +10,20 @@ import { TaskService } from './shared/task.service';
 })
 
 export class TasksComponent implements OnInit {
-    
     public tasks: Array<Task>;
     public selectedTask: Task;
     public errors: string;
 
-    public constructor(private taskService: TaskService){}
-    
+    public constructor(private taskService: TaskService) {}
     public ngOnInit(){
         this.taskService.getTasks()
             .subscribe(
                 tasks => this.tasks = tasks,
-                error => this.errors = error.statusText,
-                () => console.log('Completed')
-            )
+                error => this.errors = error.statusText
+            );
     }
 
-    public onSelect(task: Task):void{
+    public onSelect(task: Task): void {
         this.selectedTask = task;
     }
 }

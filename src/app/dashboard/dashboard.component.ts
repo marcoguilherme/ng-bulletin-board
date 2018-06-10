@@ -9,11 +9,10 @@ import { TaskService } from '../tasks/shared/task.service';
 })
 
 export class DashboardComponent implements OnInit {
-    
     public tasks: Task[];
     public errors: string;
 
-    public constructor(private taskSerivce: TaskService){}
+    public constructor(private taskSerivce: TaskService) {}
 
     public ngOnInit(){
         this.taskSerivce.getImportantTasks()
@@ -21,6 +20,6 @@ export class DashboardComponent implements OnInit {
             response => this.tasks = response,
             error => this.errors = error,
             () => console.log('Completed')
-        )
+        );
     }
 }
